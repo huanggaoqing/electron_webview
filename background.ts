@@ -2,7 +2,7 @@
  * @Author: huanggaoqing huanggaoqing@xender.com
  * @Date: 2023-09-20 14:40:36
  * @LastEditors: huanggaoqing huanggaoqing@xender.com
- * @LastEditTime: 2023-09-21 08:52:56
+ * @LastEditTime: 2023-09-21 14:08:53
  * @FilePath: \electron_webview\background.ts
  * @Description: 
  * 
@@ -35,9 +35,6 @@ const createWindow = () => {
     }
 
   })
-
-  // 获取本地 preload.js 文件的路径
-  const preloadPath = path.join(__dirname, "preload.js");
   global.shareObject = {
     webviewPreload: path.join(__dirname, "preload.js")
   }
@@ -50,11 +47,6 @@ const createWindow = () => {
     win.loadURL(url)
     win.webContents.openDevTools()
   }
-
-  win.webContents.on('did-finish-load', () => {
-    // 在网页加载完成后，将本地 preload.js 文件的路径发送到渲染进程
-    win.webContents.send('preload-path', preloadPath);
-  });
 }
 
 
