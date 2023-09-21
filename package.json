@@ -1,0 +1,25 @@
+{
+  "name": "electron_webview",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist-electron/background.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && rimraf dist-electron && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@electron/remote": "^2.0.11",
+    "@types/node": "^20.6.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "electron": "^26.2.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-electron": "^0.14.1",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue-tsc": "^1.8.5"
+  }
+}
