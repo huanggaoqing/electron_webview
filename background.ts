@@ -2,7 +2,7 @@
  * @Author: huanggaoqing huanggaoqing@xender.com
  * @Date: 2023-09-20 14:40:36
  * @LastEditors: huanggaoqing huanggaoqing@xender.com
- * @LastEditTime: 2023-09-21 14:08:53
+ * @LastEditTime: 2023-10-17 08:43:19
  * @FilePath: \electron_webview\background.ts
  * @Description: 
  * 
@@ -11,6 +11,7 @@
 import { app, BrowserWindow, ipcMain, } from "electron"
 import * as remoteMain from '@electron/remote/main';
 import path from "path"
+import Download from "./src/mainSrc/download"
 
 remoteMain.initialize()
 const createWindow = () => {
@@ -23,6 +24,15 @@ const createWindow = () => {
   })
 
   remoteMain.enable(win.webContents)
+
+  ipcMain.on("start_download", (_, data) => {
+    console.log("start_download", data)
+    const downlaodController = new Download(win.id, data)
+    downlaodController.setProgressCallback((progress: number, speedBytes) => {
+      console.log({ progress, speedBytes })
+    })
+    downlaodController.start()
+  })
 
   ipcMain.handle("getAppPath", () => {
     return app.isPackaged ? path.dirname(app.getPath('exe')) : app.getAppPath();
