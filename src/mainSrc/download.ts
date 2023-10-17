@@ -106,6 +106,7 @@ export default class Donwload {
 
   private reloadCache() {
     Donwload.downloadMrg[this.options.thid] = {
+      ...(Donwload.downloadMrg[this.options.thid] || {}),
       [this.options.itag]: this.cacheItem
     };
     store.set("downloadMrg", Donwload.downloadMrg)

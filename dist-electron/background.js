@@ -11116,6 +11116,7 @@ const _Donwload = class _Donwload {
   }
   reloadCache() {
     _Donwload.downloadMrg[this.options.thid] = {
+      ..._Donwload.downloadMrg[this.options.thid] || {},
       [this.options.itag]: this.cacheItem
     };
     store.set("downloadMrg", _Donwload.downloadMrg);
