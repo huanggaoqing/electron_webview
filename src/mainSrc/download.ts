@@ -1,14 +1,3 @@
-/*
- * @Author: huanggaoqing huanggaoqing@xender.com
- * @Date: 2023-10-16 10:03:38
- * @LastEditors: huanggaoqing huanggaoqing@xender.com
- * @LastEditTime: 2023-10-17 13:26:26
- * @FilePath: \electron_webview\src\mainSrc\download.ts
- * @Description: 
- * 
- * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
- */
-
 import path from "path";
 import fs from "fs";
 import { BrowserWindow, DownloadItem, app } from "electron";
